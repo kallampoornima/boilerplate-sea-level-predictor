@@ -33,7 +33,9 @@ def draw_plot():
     ax.plot(years_recent, sea_levels_recent)
 
     # Add labels and title
-
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Sea Level (inches)')
+    ax.set_title('Rise in Sea Level')
     
     # Save plot and return data for testing (DO NOT MODIFY)
     plt.savefig('sea_level_plot.png')
