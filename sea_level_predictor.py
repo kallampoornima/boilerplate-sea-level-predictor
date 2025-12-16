@@ -13,10 +13,24 @@ def draw_plot():
     return fig
 
     # Create first line of best fit
-
+    res = linregress(df['Year'], df['CSIRO Adjusted Sea Level'])
+    years = pd.Series(range(df['Year'].min(), 2051))
+    sea_levels = res.intercept + res.slope * years
+    ax.plot(years, sea_levels)
 
     # Create second line of best fit
 
+    df_recent = df[df['Year'] >= 2000]
+
+    res_recent = linregress(
+        df_recent['Year'],
+        df_recent['CSIRO Adjusted Sea Level']
+    )
+
+    years_recent = pd.Series(range(2000, 2051))
+    sea_levels_recent = res_recent.intercept + res_recent.slope * years_recent
+
+    ax.plot(years_recent, sea_levels_recent)
 
     # Add labels and title
 
